@@ -12,15 +12,6 @@ def adicionar_tarefa(tarefas, descricao):
     else:
         print("A descrição da tarefa deve começar com maiúscula.")
 
-def marcar_como_concluida(tarefas, task_id):
-    if task_id in tarefas and not tarefas[task_id][1]:
-        tarefas[task_id] = (tarefas[task_id][0], True)
-        print(f"Tarefa {task_id} marcada como concluída.")
-    elif task_id in tarefas and tarefas[task_id][1]:
-        print(f"Tarefa {task_id} já estava concluída.")
-    else:
-        print(f"Tarefa {task_id} não encontrada.")
-
 def marcar_como_realizada(tarefas, task_id):
     if task_id in tarefas and not tarefas[task_id][1]:
         tarefas[task_id] = (tarefas[task_id][0], True)
@@ -30,24 +21,44 @@ def marcar_como_realizada(tarefas, task_id):
     else:
         print(f"Tarefa {task_id} não encontrada.")
 
+def editar_tarefa(tarefas, task_id, nova_descricao):
+    if task_id in tarefas:
+        status_atual = "[x]" if tarefas[task_id][1] else "[ ]"
+        tarefas[task_id] = (nova_descricao, tarefas[task_id][1])
+        print(f"Tarefa {task_id} editada: {task_id}. {nova_descricao} {status_atual}")
+    else:
+        print(f"Tarefa {task_id} não encontrada.")
+
+def menu(tarefas):
+    while True:
+        print("\n--- Menu ToDoList ---")
+        print("1. Listar Tarefas")
+        print("2. Adicionar Tarefa")
+        print("3. Marcar Tarefa como Realizada")
+        print("4. Editar Tarefa")
+        print("5. Sair")
+
+        opcao = input("Escolha uma opção (1-5): ")
+
+        if opcao == "1":
+            mostrar_tarefas(tarefas)
+        elif opcao == "2":
+            nova_tarefa_descricao = input("Digite a descrição da nova tarefa: ")
+            adicionar_tarefa(tarefas, nova_tarefa_descricao)
+        elif opcao == "3":
+            tarefa_a_marcar_como_realizada = int(input("Digite o ID da tarefa a marcar como realizada: "))
+            marcar_como_realizada(tarefas, tarefa_a_marcar_como_realizada)
+        elif opcao == "4":
+            tarefa_a_editar = int(input("Digite o ID da tarefa a editar: "))
+            nova_descricao_tarefa = input("Digite a nova descrição da tarefa: ")
+            editar_tarefa(tarefas, tarefa_a_editar, nova_descricao_tarefa)
+        elif opcao == "5":
+            print("Saindo do aplicativo ToDoList. Até mais!")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
 # Exemplo de uso
 tarefas = {}
 
-adicionar_tarefa(tarefas, "Preparar a marmita")
-adicionar_tarefa(tarefas, "Arrumar a mochila")
-adicionar_tarefa(tarefas, "Fechar as janelas")
-
-marcar_como_concluida(tarefas, 1)
-
-mostrar_tarefas(tarefas)
-
-# Registrar uma nova tarefa
-nova_tarefa_descricao = input("Digite a descrição da nova tarefa: ")
-adicionar_tarefa(tarefas, nova_tarefa_descricao)
-
-mostrar_tarefas(tarefas)
-
-tarefa_a_marcar_como_realizada = int(input("Digite o ID da tarefa a marcar como realizada: "))
-marcar_como_realizada(tarefas, tarefa_a_marcar_como_realizada)
-
-mostrar_tarefas(tarefas)
+menu(tarefas)
