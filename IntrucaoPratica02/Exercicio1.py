@@ -13,9 +13,20 @@ def adicionar_tarefa(tarefas, descricao):
         print("A descrição da tarefa deve começar com maiúscula.")
 
 def marcar_como_concluida(tarefas, task_id):
-    if task_id in tarefas:
+    if task_id in tarefas and not tarefas[task_id][1]:
         tarefas[task_id] = (tarefas[task_id][0], True)
         print(f"Tarefa {task_id} marcada como concluída.")
+    elif task_id in tarefas and tarefas[task_id][1]:
+        print(f"Tarefa {task_id} já estava concluída.")
+    else:
+        print(f"Tarefa {task_id} não encontrada.")
+
+def marcar_como_realizada(tarefas, task_id):
+    if task_id in tarefas and not tarefas[task_id][1]:
+        tarefas[task_id] = (tarefas[task_id][0], True)
+        print(f"Tarefa {task_id} movida para o início da lista e marcada como realizada.")
+    elif task_id in tarefas and tarefas[task_id][1]:
+        print(f"Tarefa {task_id} já estava concluída.")
     else:
         print(f"Tarefa {task_id} não encontrada.")
 
@@ -30,7 +41,13 @@ marcar_como_concluida(tarefas, 1)
 
 mostrar_tarefas(tarefas)
 
+# Registrar uma nova tarefa
 nova_tarefa_descricao = input("Digite a descrição da nova tarefa: ")
 adicionar_tarefa(tarefas, nova_tarefa_descricao)
+
+mostrar_tarefas(tarefas)
+
+tarefa_a_marcar_como_realizada = int(input("Digite o ID da tarefa a marcar como realizada: "))
+marcar_como_realizada(tarefas, tarefa_a_marcar_como_realizada)
 
 mostrar_tarefas(tarefas)
