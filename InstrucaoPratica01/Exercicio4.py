@@ -1,13 +1,13 @@
-nome = "Biancardy Lima"
+nome_completo = "Biancardy Lima"
 
-primeiro_caractere = nome[0]
-print(f"Primeiro caractere: {primeiro_caractere}")
+posicao_ultimo_espaco = nome_completo.rfind(" ")
 
-primeiros_tres_caracteres = nome[:3]
-print(f"Primeiros três caracteres: {primeiros_tres_caracteres}")
+if posicao_ultimo_espaco != -1:
+    nome = nome_completo[:posicao_ultimo_espaco]
+    sobrenome = nome_completo[posicao_ultimo_espaco + 1:]
+else:
+    nome = nome_completo
+    sobrenome = ""
 
-a_partir_da_posicao_5 = nome[5:]
-print(f"A partir da posição 5: {a_partir_da_posicao_5}")
-
-ultimos_tres_caracteres = nome[-3:]
-print(f"Últimos três caracteres: {ultimos_tres_caracteres}")
+print(f"Nome: {nome}")
+print(f"Sobrenome: {sobrenome}")
