@@ -1,0 +1,42 @@
+[
+    {
+        "nome": "Biancardy",
+        "sobrenome": "Silva",
+        "ano_nascimento": 1994,
+        "rg": "123456789",
+        "ano_admissao": 2010,
+        "salario": 5000.00
+    },
+    {
+        "nome": "Maria",
+        "sobrenome": "Souza",
+        "ano_nascimento": 1990,
+        "rg": "987654321",
+        "ano_admissao": 2015,
+        "salario": 6000.00
+    },
+    {
+        "nome": "Carlos",
+        "sobrenome": "Ferreira",
+        "ano_nascimento": 1988,
+        "rg": "456789123",
+        "ano_admissao": 2012,
+        "salario": 5500.00
+    },
+    {
+        "nome": "Ana",
+        "sobrenome": "Lima",
+        "ano_nascimento": 1992,
+        "rg": "789123456",
+        "ano_admissao": 2018,
+        "salario": 7000.00
+    },
+    {
+        "nome": "Lucas",
+        "sobrenome": "Costa",
+        "ano_nascimento": 1980,
+        "rg": "321654987",
+        "ano_admissao": 2008,
+        "salario": 8000.00
+    }
+]
